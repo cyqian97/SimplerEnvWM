@@ -27,3 +27,7 @@ dist/
 .vscode
 
 imgui.ini
+
+google-cloud*
+checkpoints/
+results*
