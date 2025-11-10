@@ -2,19 +2,24 @@ version: '3.8'
 
 services:
   simplerenv:
-    image: cyqian97/ubuntu:22.04
+    image:  cyqian97/vulkan:latest
     container_name: simplerenv
-    environment:
-      - DISPLAY=${DISPLAY}
-      - NVIDIA_VISIBLE_DEVICES=all
-      - NVIDIA_DRIVER_CAPABILITIES=all
-    volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - ${HOME}/.Xauthority:/root/.Xauthority:rw
-      - ./:/root/simplerenv:rw
+    privileged: true
     network_mode: host
     stdin_open: true
     tty: true
+    shm_size: 128G
+    environment:
+      # - DISPLAY=${DISPLAY}
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all
+    devices:
+      - /dev/dri:/dev/dri
+    volumes:
+      - /mnt:/mnt
+      - /etc/vulkan/icd.d/nvidia_icd.json:/etc/vulkan/icd.d/nvidia_icd.json:ro
+      - /etc/vulkan/implicit_layer.d/nvidia_layers.json:/etc/vulkan/implicit_layer.d/nvidia_layers.json:ro
+      - /usr/share/glvnd/egl_vendor.d/10_nvidia.json:/usr/share/glvnd/egl_vendor.d/10_nvidia.json:ro 
     deploy:
       resources:
         reservations:
@@ -22,4 +27,4 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
-    command: zsh
+    command: bash
