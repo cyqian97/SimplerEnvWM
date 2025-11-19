@@ -1,7 +1,3 @@
-# @title Install vulkan for rendering
-apt-get install -yqq --no-install-recommends libvulkan-dev vulkan-tools
-# below fixes some bugs introduced by some recent Colab changes
-mkdir -p /usr/share/vulkan/icd.d
-wget -q -P /usr/share/vulkan/icd.d https://raw.githubusercontent.com/haosulab/ManiSkill/main/docker/nvidia_icd.json
-mkdir -p /usr/share/glvnd/egl_vendor.d
-wget -q -O /usr/share/glvnd/egl_vendor.d/10_nvidia.json https://raw.githubusercontent.com/haosulab/ManiSkill/main/docker/10_nvidia.json
+## Use in docker
+Since this repo requires vulkan, and vulkan installation is tricky. I used the Dockerfile from [Nvidia k8s-samples](https://github.com/NVIDIA/k8s-samples/tree/main/deployments/container/vulkan) to build a base image and then applied my own Dockerfile. The image is then started using the docker-compose.yml file.
+ The inference was successful in the docker image.
