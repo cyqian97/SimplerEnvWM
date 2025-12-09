@@ -1,7 +1,7 @@
 # Vision Reward Pipeline
 
 
-### Running PPO with Vision Rewards
+#### Running PPO with Vision Rewards
 
 Train PPO using vision-based rewards (SAM3 + Depth-Anything-3):
 
