@@ -1,6 +1,6 @@
 # Vision Reward Pipeline
 
-```
+```bash
 mv SimplerEnvWM/reward/pick_cube_vision.py PATH_TO_MANISKIL/mani_skill/envs/tasks/tabletop/pick_cube_vision.py
 
 mv SimplerEnvWM/reward/pick_cube_vision_reward.py PATH_TO_MANISKIL/mani_skill/envs/tasks/tabletop/pick_cube_vision_reward.py
@@ -13,6 +13,7 @@ mv SimplerEnvWM/reward/pick_cube_vision_reward.py PATH_TO_MANISKIL/mani_skill/en
 Train PPO using vision-based rewards (SAM3 + Depth-Anything-3):
 
 ```bash
+cd SimplerEnvWM
 ./docker_train_ppo_rgb.sh
 ```
 
